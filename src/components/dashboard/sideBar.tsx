@@ -1,0 +1,52 @@
+import { NavLink } from "react-router-dom";
+import { IMgs, logout, sections, switchOrg } from "../../constants/constant";
+
+const linkClass = ({ isActive }: { isActive: boolean }) =>
+  `side-nav__link ${isActive ? "side-nav__link--active" : ""}`;
+
+const Sidebar = () => {
+  return (
+    <aside className="side-nav">
+      <nav className="side-nav__menu">
+        <div className="side-nav__compactment">
+          <button className="side-nav__link">
+            <img src={switchOrg.icon} alt={`${switchOrg.name} icon`} />
+            <span>{switchOrg.name}</span>
+            <img src={IMgs.chevronDown} alt={`chevron down icon`} />
+          </button>
+        </div>
+
+        {sections.map((section) => (
+          <div
+            className="side-nav__compactment"
+            key={section.title ?? "dashboard"}
+          >
+            {section.title ? <h1>{section.title}</h1> : null}
+
+            {section.items.map((item) => (
+              <NavLink
+                to={item.routeUrl}
+                className={linkClass}
+                key={item.routeUrl}
+              >
+                <img src={item.icon} alt={`${item.name} icon`} />
+                <span>{item.name}</span>
+              </NavLink>
+            ))}
+          </div>
+        ))}
+
+        <div className="side-nav__footer">
+          <button className={"side-nav__link"}>
+            <img src={logout.icon} alt={`${logout.name} icon`} />
+            <span>{logout.name}</span>
+          </button>
+
+          <p>V1.20</p>
+        </div>
+      </nav>
+    </aside>
+  );
+};
+
+export default Sidebar;
