@@ -1,0 +1,102 @@
+@use "sass:map";
+@use "sass:color" as c;
+
+@use "./variables/colors.scss" as color;
+@use "./variables/tokens.scss" as t;
+
+$btn-defaults: (
+  bg: transparent,
+  text: color.$gray-blue-400,
+  border: transparent,
+  radius: t.r(sm),
+  width: auto,
+);
+
+@function v($variant, $key) {
+  @if map.has-key($variant, $key) {
+    @return map.get($variant, $key);
+  }
+
+  @return map.get($btn-defaults, $key);
+}
+
+@function pill($accent) {
+  @return (
+    bg: c.change($accent, $alpha: 0.1),
+    // equals rgba($accent, 0.1)
+    text: $accent,
+    border: transparent,
+    radius: t.r(pill)
+  );
+}
+
+$btn-variants: (
+  primary: (
+    bg: color.$cyan-color,
+    text: color.$white-color,
+    width: t.$full,
+  ),
+
+  secondary: (
+    bg: transparent,
+    text: color.$gray-blue-400,
+    border: t.s(0.2) solid color.$gray-blue-400,
+    width: t.$full,
+  ),
+
+  outline: (
+    bg: c.change(color.$gray-blue-400, $alpha: 0.06),
+    text: color.$gray-blue-400,
+    radius: t.r(pill),
+    border: transparent,
+  ),
+
+  pending: pill(color.$yellow-500),
+  danger: pill(color.$red-600),
+  active: pill(color.$green-500),
+);
+
+@mixin button-variant($name) {
+  @if not map.has-key($btn-variants, $name) {
+    @error "Unknown button variant: #{$name}";
+  }
+
+  $variant: map.get($btn-variants, $name);
+
+  background: v($variant, bg);
+  color: v($variant, text);
+  width: v($variant, width);
+  border: v($variant, border);
+  border-radius: v($variant, radius);
+
+  &:hover {
+    filter: brightness(0.95);
+  }
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: t.s(2);
+  padding: t.s(2) t.s(4);
+  border-radius: map.get($btn-defaults, radius);
+  font-weight: 600;
+  cursor: pointer;
+  transition: 150ms ease;
+
+  &:active {
+    transform: translateY(t.s(0.2));
+  }
+}
+
+@each $name, $_ in $btn-variants {
+  .btn--#{$name} {
+    @include button-variant($name);
+  }
+}

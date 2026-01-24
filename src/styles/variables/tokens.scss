@@ -1,0 +1,115 @@
+/* src/styles/_tokens.scss */
+@use "sass:map";
+
+/* 4px base scale */
+$space: (
+  0: 0,
+  0.2: 1px,
+  0.5: 2px,
+
+  1: 0.25rem,
+  // 4px
+  2: 0.5rem,
+  // 8px
+  3: 0.75rem,
+  // 12px
+  4: 1rem,
+  // 16px
+  5: 1.25rem,
+  // 20px
+  6: 1.5rem,
+  // 24px
+  8: 2rem,
+  // 32px
+  10: 2.5rem,
+  // 40px
+  12: 3rem,
+  // 48px
+  16: 4rem,
+
+  // 64px
+  /* larger scale (still in rem, keeps consistency) */ 20: 5rem,
+  // 80px
+  24: 6rem,
+  // 96px
+  28: 7rem,
+  // 112px
+  32: 8rem,
+  // 128px
+  36: 9rem,
+  // 144px
+  40: 10rem,
+  // 160px
+  44: 11rem,
+  // 176px
+  48: 12rem,
+  // 192px
+  56: 14rem,
+  // 224px
+  64: 16rem,
+  // 256px
+  72: 18rem,
+  // 288px
+  80: 20rem,
+  // 320px
+  96: 24rem,
+
+  // 384px
+  /* layout widths (explicit pixels for clarity) */ 128: 512px,
+  160: 640px,
+  192: 768px,
+  224: 896px,
+  256: 1024px,
+  288: 1152px,
+  320: 1280px,
+  360: 1440px,
+  400: 1600px,
+);
+
+$radius: (
+  sm: 0.5rem,
+  md: 0.75rem,
+  lg: 1rem,
+  pill: 999px,
+);
+
+$font: (
+  xs: 0.75rem,
+  sm: 0.875rem,
+  base: 1rem,
+  lg: 1.125rem,
+  xl: 1.25rem,
+  "2xl": 1.5rem,
+);
+
+$lh: (
+  tight: 1.2,
+  normal: 1.5,
+  relaxed: 1.65,
+);
+
+$fw: (
+  regular: 400,
+  medium: 500,
+  semibold: 600,
+  bold: 700,
+);
+
+$full: 100%;
+$half: 50%;
+
+@function s($key) {
+  @return map.get($space, $key);
+}
+@function r($key) {
+  @return map.get($radius, $key);
+}
+@function fs($key) {
+  @return map.get($font, $key);
+}
+@function lh($key) {
+  @return map.get($lh, $key);
+}
+@function fw($key) {
+  @return map.get($fw, $key);
+}
