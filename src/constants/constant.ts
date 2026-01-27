@@ -16,6 +16,7 @@ import servicesicon from "/images/services.png";
 import settlementicon from "/images/settlement.png";
 import trxicon from "/images/transactions.png";
 import usersicon from "/images/users.png";
+import usericon from "/images/user.png";
 import guarantorsicon from "/images/guarantors.png";
 import loanIcon from "/images/loanss.png";
 import chevronDown from "/images/chevron.png";
@@ -25,6 +26,7 @@ import stackIcon from "/images/stack.png";
 import twoUser from "/images/2-users.png";
 import threeUser from "/images/3-user.png";
 import switchOrgIcon from "/images/switch-org.png";
+import filterIcon from "/images/filter-results-button.png";
 
 import whitelistIcon from "/images/whitelist.png";
 import pablo from "/images/pablo-sign-in.svg";
@@ -129,4 +131,65 @@ export const IMgs = {
   twoUser,
   threeUser,
   chevronDown,
+  usericon,
+  filterIcon,
 };
+// savings;
+// active;
+// ;
+// loans;
+
+export const stats = [
+  {
+    title: "Users",
+    variant: "users",
+    icon: twoUser,
+
+    value: 40097,
+  },
+  {
+    title: "Active Users",
+    variant: "active",
+    icon: threeUser,
+    value: 32040,
+  },
+  {
+    title: "Users with Loans",
+    variant: "loans",
+    icon: loansIcon,
+    value: 10021,
+  },
+  {
+    title: "Users with Savings",
+    variant: "savings",
+    icon: stackIcon,
+    value: 40044,
+  },
+];
+
+export const det = [
+  {
+    label: "General Details",
+    value: "general",
+  },
+  {
+    label: "Documents",
+    value: "doc",
+  },
+  {
+    label: "Bank details",
+    value: "bank",
+  },
+  {
+    label: "Loans",
+    value: "loan",
+  },
+  {
+    label: "Savings",
+    value: "savings",
+  },
+  {
+    label: "App and System",
+    value: "system",
+  },
+];

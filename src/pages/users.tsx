@@ -1,5 +1,7 @@
+import UserPage from "../components/dashboard/userPage";
+
 const Users = () => {
-  return <div>welcome</div>;
+  return <UserPage />;
 };
 
 export default Users;

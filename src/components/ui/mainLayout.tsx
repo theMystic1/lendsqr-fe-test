@@ -4,19 +4,28 @@ import Users from "../../pages/users";
 import NotFound from "../../pages/notFound";
 import { sections } from "../../constants/constant";
 import React from "react";
+import UserDetails from "../../pages/usersDetail";
+import Login from "../../pages/login";
 
 const MainLayout = () => {
   return (
     <Routes>
       {/* Redirect root */}
-      <Route path="/" element={<Navigate to="/auth" replace />} />
+      <Route path="/" element={<Navigate to="/users" replace />} />
+      <Route path="/login" element={<Login />} />
 
       {/* Layout routes */}
       <Route element={<DashboardLayout />}>
         {sections.map((section, i) => (
           <React.Fragment key={section.title || i}>
             {section.items.map((item) => (
-              <Route path={item.routeUrl} element={<Users />} key={item.name} />
+              <React.Fragment key={item.name}>
+                <Route path={item.routeUrl} element={<Users />} />
+                <Route
+                  path={`${item.routeUrl}/:id`}
+                  element={<UserDetails />}
+                />
+              </React.Fragment>
             ))}
           </React.Fragment>
         ))}

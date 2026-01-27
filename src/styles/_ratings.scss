@@ -1,0 +1,48 @@
+@use "./variables/colors.scss" as color;
+
+@use "./variables/tokens.scss" as t;
+
+.star-rating {
+  display: inline-flex;
+  align-items: center;
+  gap: t.s(2);
+}
+
+.star-rating__stars {
+  display: inline-flex;
+  gap: t.s(1);
+}
+
+.star-rating__starBtn {
+  appearance: none;
+  background: transparent;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+  line-height: 0;
+  color: color.$yellow-500; /* default "empty" color */
+}
+
+.star-rating__starBtn:disabled {
+  cursor: default;
+}
+
+.star-rating__star {
+  width: var(--star-size, t.s(4));
+  height: var(--star-size, t.s(4));
+}
+
+.star-rating__outline {
+  fill: none;
+  stroke: color.$yellow-500;
+  stroke-width: 1.2;
+}
+
+.star-rating__fill {
+  /* uses currentColor via gradient stop */
+}
+
+.star-rating__value {
+  font-size: t.s(3);
+  opacity: 0.75;
+}

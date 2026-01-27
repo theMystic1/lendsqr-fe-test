@@ -1,0 +1,82 @@
+@use "./variables/tokens.scss" as t;
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.sk {
+  width: t.$full;
+  border-radius: t.s(4);
+  padding: t.s(6);
+  background: rgba(255, 255, 255, 0.75);
+}
+
+.sk__block {
+  margin-top: t.s(6);
+  display: flex;
+  flex-direction: column;
+  gap: t.s(4);
+}
+
+.sk__row {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: t.s(4);
+}
+
+.sk__bar {
+  height: t.s(4);
+  border-radius: t.s(2);
+  position: relative;
+  overflow: hidden;
+  background: rgba(148, 163, 184, 0.22); // slate-ish neutral
+}
+
+// Sizes
+.sk__bar--title {
+  width: 38%;
+  height: t.s(5);
+}
+.sk__bar--sub {
+  width: 22%;
+  margin-top: t.s(2);
+}
+.sk__bar--cell {
+  width: 100%;
+}
+
+// Shimmer
+.sk__bar::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform: translateX(-100%);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.55),
+    transparent
+  );
+  animation: sk-shimmer 1.1s ease-in-out infinite;
+}
+
+@keyframes sk-shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+// Respect reduced motion
+@media (prefers-reduced-motion: reduce) {
+  .sk__bar::after {
+    animation: none;
+  }
+}

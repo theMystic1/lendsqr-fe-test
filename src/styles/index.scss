@@ -6,10 +6,16 @@
 
 @use "./card.scss" as card;
 
+@use "./layout.scss" as layout;
+@use "./table.scss" as tb;
+@use "./skeleton.scss" as sk;
+@use "./rowMenu.scss" as rm;
+@use "./ratings.scss" as rt;
+
 :root {
-  max-width: 1280px;
+  // max-width: 1280px;
   margin: t.s(0) auto;
-  padding: t.s(8);
+  // padding: t.s(8);
   text-align: center;
   font-family:
     system-ui,
@@ -42,8 +48,18 @@ body {
   margin: t.s(0);
   background: color.$white-color-200;
   color: color.$gray-blue-primary;
-  padding: t.s(5);
+  flex-grow: 1;
+  width: t.$full;
+  // padding: t.s(5);
   // opacity: 0.1;
+  overflow-x: hidden;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin: 0;
 }
 
 input {
@@ -63,6 +79,7 @@ input {
   box-shadow: none;
 
   -webkit-tap-highlight-color: transparent;
+  position: relative;
 
   font: inherit;
   color: inherit;
@@ -77,21 +94,45 @@ input:active {
   box-shadow: none;
 }
 
+.__btn {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  color: color.$cyan-color;
+}
+
 .nav {
   box-shadow: t.s(1) t.s(0) t.s(5) t.s(0) color.$shadow-color;
   height: t.s(24);
   background: color.$white-color;
-  position: fixed;
+  position: sticky;
   top: t.s(0);
   left: t.s(0);
   right: t.s(0);
   z-index: 100;
+
+  padding: t.s(6);
+
+  &__item {
+    width: t.$full;
+
+    img {
+      height: t.s(12);
+    }
+  }
+
+  &__itm {
+    padding-right: t.s(6);
+  }
 }
+
 .side-nav {
   box-shadow: t.s(1) t.s(0) t.s(5) t.s(0) color.$shadow-color;
   width: t.s(64);
   background: color.$white-color;
   position: fixed;
+
+  height: 100vh;
   top: t.s(0);
   left: t.s(0);
   bottom: t.s(0);
@@ -134,8 +175,6 @@ input:active {
   }
 
   &__menu {
-    display: flex;
-    flex-direction: column;
     gap: t.s(8);
     align-items: start;
     margin-top: t.s(28);
@@ -144,8 +183,6 @@ input:active {
   }
 
   &__compactment {
-    display: flex;
-    flex-direction: column;
     gap: t.s(2);
     width: t.$full;
   }
@@ -154,9 +191,7 @@ input:active {
     border-top: t.s(0.2) solid color.$gray-blue-primary;
     width: t.$full;
     height: t.s(8);
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+
     align-items: start;
     p {
       text-align: start;
@@ -175,9 +210,7 @@ input:active {
   &__link {
     padding: t.s(3) t.s(3);
     text-decoration: none;
-    display: flex;
-    justify-content: start;
-    align-items: center;
+
     gap: t.s(3);
     font-weight: t.fw(medium);
     font-size: t.s(3);
@@ -185,8 +218,8 @@ input:active {
     letter-spacing: t.s(0);
     width: t.$full;
     color: color.$gray-blue-primary;
-
     overflow-y: visible;
+    padding-left: t.s(5);
 
     &--active {
       background: rgba(color.$cyan-color, 0.06);
@@ -195,20 +228,216 @@ input:active {
     }
   }
 }
+.dashboard {
+  height: 100vh;
+  display: grid;
+  grid-template-rows: t.s(16) 1fr; /* set this to your navbar height */
+  overflow: hidden; /* prevents body/page scrolling */
+}
 
-.main-body {
+.dashboard__nav {
   position: relative;
-  margin-top: t.s(24);
-  margin-left: t.s(64);
+  z-index: 60;
+  background: color.$white-color;
+  border-bottom: 1px solid rgba(color.$gray-blue-400, 0.16);
+}
+
+.dashboard__body {
+  display: grid;
+  grid-template-columns: t.s(64) 1fr; /* sidebar width */
+  min-height: 0; /* important for nested scrolling */
+}
+
+.dashboard__sidebar {
+  min-height: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  background: color.$white-color;
+  box-shadow: t.s(1) t.s(0) t.s(5) t.s(0) color.$shadow-color;
+
+  /* hide scrollbar but keep scroll */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  &::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+    display: none;
+  }
+}
+
+.dashboard__main {
+  min-width: 0;
+  min-height: 0;
+  overflow-y: auto;
+  padding: t.s(10) t.s(6);
 }
 
 .input {
   height: t.s(10);
   opacity: 1;
-  border-radius: t.s(1);
+  border-radius: t.s(2);
   padding: t.s(2) t.s(4);
-  border: t.s(0.25) solid color.$gray-blue-500;
+  border: t.s(0.2) solid color.$gray-blue-500;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  width: t.$full;
+
+  flex-grow: 1;
+
+  &__min {
+    min-width: t.s(80);
+  }
+
+  input::placeholder {
+    color: color.$gray-blue-400;
+  }
+}
+
+.searchBtn {
+  height: t.s(10);
+  width: t.s(14);
+  background-color: color.$cyan-color;
+  color: color.$white-color;
+  border-top-right-radius: t.r(sm);
+  border-bottom-right-radius: t.r(sm);
+  border: none;
+  z-index: 50;
+  right: 0;
+}
+
+.logo {
+  // cursor: pointer;
+
+  img {
+    height: t.s(8);
+  }
+}
+
+.underline {
+  text-decoration: underline;
+}
+
+.select {
+  padding: t.s(2) t.s(4);
+  border: t.s(0);
+  border-radius: t.s(2);
+  background-color: color.$gray-blue-500;
+  color: color.$gray-blue-400;
+}
+
+.pagiTxt {
+  color: color.$gray-blue-500;
+
+  &__active {
+    font-weight: 600;
+    color: color.$gray-blue-400;
+  }
+}
+
+.pagiBtn {
+  height: t.s(6);
+  width: t.s(6);
+  color: color.$gray-blue-400;
+  background-color: color.$gray-blue-500;
+  border-radius: t.s(2);
+  cursor: pointer;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pagiBtn:disabled {
+  color: rgba(color.$gray-blue-400, 0.1);
+  cursor: not-allowed;
+}
+
+.stackHigh {
+  z-index: 999;
+}
+
+.back-btn {
+  background: transparent;
+  border: none;
+  width: t.$full;
+  cursor: pointer;
+}
+
+.userHeader {
+  &__profilePic {
+    height: t.s(24);
+    width: t.s(24);
+    border-radius: t.$half;
+    background-color: color.$white-color-300;
+
+    img {
+      width: t.s(8);
+    }
+  }
+  &__tier {
+    border-left: t.s(0.2) solid color.$gray-blue-500;
+    border-right: t.s(0.2) solid color.$gray-blue-500;
+    height: t.$full;
+    padding: t.s(3) t.s(3);
+  }
+
+  &__p {
+    font-size: t.s(3);
+  }
+
+  &__nav {
+    width: 80%;
+    button {
+      background-color: transparent;
+
+      cursor: pointer;
+    }
+  }
+}
+
+.colBorder {
+  border-bottom: t.s(0.2) solid rgba(color.$gray-blue-400, 0.1);
+  padding: t.s(4);
+}
+
+.inCtiveH {
+  border: 0;
+}
+.activeH {
+  color: color.$cyan-color;
+  border-bottom: t.s(0.5) solid color.$cyan-color;
+  border-top: 0;
+  border-right: 0;
+  border-left: 0;
+}
+
+.labelInfo {
+  p {
+    font-size: t.s(3);
+    font-weight: 400;
+    text-transform: uppercase;
+  }
+
+  h3 {
+    font-size: t.s(4);
+    font-weight: 500;
+  }
+}
+
+.login {
+  height: 100dvh;
+  // padding: t.s(12);
+
+  &__login {
+    background-color: color.$white-color;
+    height: t.$full;
+    width: t.$full;
+  }
+}
+
+.forgotLink {
+  text-decoration: none;
+  text-transform: uppercase;
+  color: color.$cyan-color;
 }

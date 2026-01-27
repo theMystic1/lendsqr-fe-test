@@ -1,0 +1,37 @@
+@use "./variables/tokens.scss" as t;
+@use "./variables/colors.scss" as c;
+
+.table {
+  width: t.$full;
+  font-size: t.s(3);
+  text-align: start;
+  border-collapse: collapse;
+  z-index: 50;
+
+  &__th,
+  &__td {
+    text-align: start;
+    padding: t.s(4);
+    border-bottom: t.s(0.2) solid c.$gray-blue-500; // ✅ visible separator
+    // display: flex;
+    position: relative;
+
+    img {
+      width: t.s(4);
+    }
+
+    // button {
+    //   border: none;
+    //   background-color: transparent;
+    //   width: t.$full;
+    // }
+  }
+  &__th {
+    cursor: pointer;
+  }
+
+  // optional: remove border on last row
+  tbody tr:last-child &__td {
+    border-bottom: 0;
+  }
+}

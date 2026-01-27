@@ -2,14 +2,14 @@ import { NavLink } from "react-router-dom";
 import { IMgs, logout, sections, switchOrg } from "../../constants/constant";
 
 const linkClass = ({ isActive }: { isActive: boolean }) =>
-  `side-nav__link ${isActive ? "side-nav__link--active" : ""}`;
+  `side-nav__link flex justify-start items-center ${isActive ? "side-nav__link--active" : ""}`;
 
 const Sidebar = () => {
   return (
     <aside className="side-nav">
-      <nav className="side-nav__menu">
+      <nav className="side-nav__menu flex flex-col">
         <div className="side-nav__compactment">
-          <button className="side-nav__link">
+          <button className="side-nav__link flex justify-start items-center">
             <img src={switchOrg.icon} alt={`${switchOrg.name} icon`} />
             <span>{switchOrg.name}</span>
             <img src={IMgs.chevronDown} alt={`chevron down icon`} />
@@ -18,7 +18,7 @@ const Sidebar = () => {
 
         {sections.map((section) => (
           <div
-            className="side-nav__compactment"
+            className="side-nav__compactment flex flex-col"
             key={section.title ?? "dashboard"}
           >
             {section.title ? <h1>{section.title}</h1> : null}
@@ -36,7 +36,7 @@ const Sidebar = () => {
           </div>
         ))}
 
-        <div className="side-nav__footer">
+        <div className="side-nav__footer flex flex-col">
           <button className={"side-nav__link"}>
             <img src={logout.icon} alt={`${logout.name} icon`} />
             <span>{logout.name}</span>

@@ -1,0 +1,47 @@
+@use "./variables/tokens.scss" as t;
+@use "./variables/colors.scss" as color;
+
+.menu {
+  position: relative;
+  display: inline-flex;
+}
+
+.menu__trigger {
+  background: transparent;
+  border: 0;
+  padding: t.s(2);
+  border-radius: t.s(2);
+  cursor: pointer;
+
+  &:hover {
+    background: rgba(0, 0, 0, 0.06);
+  }
+}
+
+.menu__panel {
+  position: absolute;
+  right: 0;
+  top: calc(t.$full + t.s(2));
+  min-width: t.s(40);
+  background: color.$white-color;
+  // border: t.s(0.2) solid rgba(color.$gray-blue-400);
+  border-radius: t.s(2);
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.12);
+  padding: t.s(2);
+  z-index: 999;
+}
+
+.menu__item {
+  width: t.$full;
+  text-align: left;
+  background: transparent;
+  border: t.s(0);
+  padding: t.s(2);
+  border-radius: t.s(2);
+  cursor: pointer;
+  color: color.$gray-blue-400;
+  font-size: t.s(3);
+  &:hover {
+    background: rgba(0, 0, 0, 0.06);
+  }
+}

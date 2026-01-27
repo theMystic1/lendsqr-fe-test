@@ -1,0 +1,762 @@
+[
+  {
+    "id": "697637e3c0be8f2a99255d2f",
+    "createdAt": "2025-11-Tuesday",
+    "status": "inactive",
+    "organization": "irure laboris",
+    "fullName": "Bryan Armstrong",
+    "phoneNumber": 7184392035,
+    "emailAddress": "bryanarmstrong@oulu.com",
+    "bvn": 49608146678,
+    "gender": "male",
+    "maritalStatus": "Single",
+    "children": 2,
+    "typeOfResidence": "Company Housing",
+    "levelOfEducation": "OND",
+    "employmentStatus": "Employed",
+    "sectorOfEmployment": "Oil & Gas",
+    "durationOfEmployment": "1 year",
+    "officeEmail": "bryanarmstrong@oulu.com",
+    "monthlyIncome": "₦220543.00 - ₦975703.00",
+    "loanRepayment": 157179,
+    "twitter": "@88",
+    "facebook": "Cannon Mcfarland",
+    "instagram": "@930",
+    "guarantors": [
+      {
+        "guarantorFullName": "Finley Todd",
+        "guarantorPhoneNumber": 7894952014,
+        "guarantorEmailAddress": "finleytodd@oulu.com",
+        "guarantorRelationship": "Spouse"
+      },
+      {
+        "guarantorFullName": "Maribel Lang",
+        "guarantorPhoneNumber": 7043618816,
+        "guarantorEmailAddress": "maribellang@oulu.com",
+        "guarantorRelationship": "Colleague"
+      }
+    ]
+  },
+  {
+    "id": "697637e3954f607c4e16d132",
+    "createdAt": "2025-12-Thursday",
+    "status": "inactive",
+    "organization": "cupidatat nulla",
+    "fullName": "Perez Wall",
+    "phoneNumber": 7579687462,
+    "emailAddress": "perezwall@oulu.com",
+    "bvn": 13641436126,
+    "gender": "male",
+    "maritalStatus": "Single",
+    "children": 2,
+    "typeOfResidence": "Rented Apartment",
+    "levelOfEducation": "HND",
+    "employmentStatus": "Unemployed",
+    "sectorOfEmployment": "Oil & Gas",
+    "durationOfEmployment": "1 year",
+    "officeEmail": "perezwall@oulu.com",
+    "monthlyIncome": "₦223338.00 - ₦865923.00",
+    "loanRepayment": 124304,
+    "twitter": "@786",
+    "facebook": "Cecile Perez",
+    "instagram": "@353",
+    "guarantors": [
+      {
+        "guarantorFullName": "Mercedes Merrill",
+        "guarantorPhoneNumber": 7411335775,
+        "guarantorEmailAddress": "mercedesmerrill@oulu.com",
+        "guarantorRelationship": "Friend"
+      },
+      {
+        "guarantorFullName": "Olsen Wilkins",
+        "guarantorPhoneNumber": 7707423285,
+        "guarantorEmailAddress": "olsenwilkins@oulu.com",
+        "guarantorRelationship": "Sister"
+      }
+    ]
+  },
+  {
+    "id": "697637e343d70caf86715797",
+    "createdAt": "2025-05-Saturday",
+    "status": "inactive",
+    "organization": "nisi magna",
+    "fullName": "Mclaughlin Floyd",
+    "phoneNumber": 7777967482,
+    "emailAddress": "mclaughlinfloyd@oulu.com",
+    "bvn": 18637071735,
+    "gender": "male",
+    "maritalStatus": "Married",
+    "children": 1,
+    "typeOfResidence": "Company Housing",
+    "levelOfEducation": "B.Sc",
+    "employmentStatus": "Unemployed",
+    "sectorOfEmployment": "Education",
+    "durationOfEmployment": "1 year",
+    "officeEmail": "mclaughlinfloyd@oulu.com",
+    "monthlyIncome": "₦340835.00 - ₦1086387.00",
+    "loanRepayment": 46194,
+    "twitter": "@962",
+    "facebook": "Laverne Strickland",
+    "instagram": "@989",
+    "guarantors": [
+      {
+        "guarantorFullName": "Davidson Vaughan",
+        "guarantorPhoneNumber": 8811505272,
+        "guarantorEmailAddress": "davidsonvaughan@oulu.com",
+        "guarantorRelationship": "Parent"
+      },
+      {
+        "guarantorFullName": "Malinda Bender",
+        "guarantorPhoneNumber": 8190425679,
+        "guarantorEmailAddress": "malindabender@oulu.com",
+        "guarantorRelationship": "Colleague"
+      }
+    ]
+  },
+  {
+    "id": "697637e335d74c0f678ea0a6",
+    "createdAt": "2025-04-Wednesday",
+    "status": "pending",
+    "organization": "aliqua veniam",
+    "fullName": "Elma Buckley",
+    "phoneNumber": 8701632812,
+    "emailAddress": "elmabuckley@oulu.com",
+    "bvn": 97368660450,
+    "gender": "female",
+    "maritalStatus": "Married",
+    "children": "None",
+    "typeOfResidence": "Rented Apartment",
+    "levelOfEducation": "M.Sc",
+    "employmentStatus": "Employed",
+    "sectorOfEmployment": "Oil & Gas",
+    "durationOfEmployment": "5 years",
+    "officeEmail": "elmabuckley@oulu.com",
+    "monthlyIncome": "₦338632.00 - ₦727040.00",
+    "loanRepayment": 167503,
+    "twitter": "@922",
+    "facebook": "Hensley Sheppard",
+    "instagram": "@335",
+    "guarantors": [
+      {
+        "guarantorFullName": "Jacklyn Walters",
+        "guarantorPhoneNumber": 7946163722,
+        "guarantorEmailAddress": "jacklynwalters@oulu.com",
+        "guarantorRelationship": "Friend"
+      },
+      {
+        "guarantorFullName": "Dina Peterson",
+        "guarantorPhoneNumber": 8330575253,
+        "guarantorEmailAddress": "dinapeterson@oulu.com",
+        "guarantorRelationship": "Parent"
+      }
+    ]
+  },
+  {
+    "id": "697637e34bdba5ca5e790abd",
+    "createdAt": "2024-08-Thursday",
+    "status": "active",
+    "organization": "laboris enim",
+    "fullName": "Garrett Hancock",
+    "phoneNumber": 8826578845,
+    "emailAddress": "garretthancock@oulu.com",
+    "bvn": 50504130519,
+    "gender": "male",
+    "maritalStatus": "Divorced",
+    "children": "None",
+    "typeOfResidence": "Rented Apartment",
+    "levelOfEducation": "HND",
+    "employmentStatus": "Unemployed",
+    "sectorOfEmployment": "Telecoms",
+    "durationOfEmployment": "3 years",
+    "officeEmail": "garretthancock@oulu.com",
+    "monthlyIncome": "₦216033.00 - ₦892470.00",
+    "loanRepayment": 83397,
+    "twitter": "@809",
+    "facebook": "Judy Howard",
+    "instagram": "@874",
+    "guarantors": [
+      {
+        "guarantorFullName": "Beulah Ochoa",
+        "guarantorPhoneNumber": 7666716536,
+        "guarantorEmailAddress": "beulahochoa@oulu.com",
+        "guarantorRelationship": "Parent"
+      },
+      {
+        "guarantorFullName": "Keith Daniel",
+        "guarantorPhoneNumber": 7227460949,
+        "guarantorEmailAddress": "keithdaniel@oulu.com",
+        "guarantorRelationship": "Friend"
+      }
+    ]
+  },
+  {
+    "id": "697637e3bf694d4a925afd5d",
+    "createdAt": "2022-03-Sunday",
+    "status": "blacklisted",
+    "organization": "veniam proident",
+    "fullName": "Edna Fleming",
+    "phoneNumber": 8384108591,
+    "emailAddress": "ednafleming@oulu.com",
+    "bvn": 99068701606,
+    "gender": "female",
+    "maritalStatus": "Separated",
+    "children": 1,
+    "typeOfResidence": "Rented Apartment",
+    "levelOfEducation": "M.Sc",
+    "employmentStatus": "Unemployed",
+    "sectorOfEmployment": "Oil & Gas",
+    "durationOfEmployment": "5 years",
+    "officeEmail": "ednafleming@oulu.com",
+    "monthlyIncome": "₦234521.00 - ₦1136203.00",
+    "loanRepayment": 79721,
+    "twitter": "@279",
+    "facebook": "Mcgee Mcgee",
+    "instagram": "@393",
+    "guarantors": [
+      {
+        "guarantorFullName": "Virginia Thomas",
+        "guarantorPhoneNumber": 7596908149,
+        "guarantorEmailAddress": "virginiathomas@oulu.com",
+        "guarantorRelationship": "Spouse"
+      },
+      {
+        "guarantorFullName": "Fletcher Wilson",
+        "guarantorPhoneNumber": 8621160444,
+        "guarantorEmailAddress": "fletcherwilson@oulu.com",
+        "guarantorRelationship": "Sister"
+      }
+    ]
+  },
+  {
+    "id": "697637e3bc01210119adecfc",
+    "createdAt": "2022-10-Wednesday",
+    "status": "pending",
+    "organization": "quis dolor",
+    "fullName": "Head Boyle",
+    "phoneNumber": 8276397942,
+    "emailAddress": "headboyle@oulu.com",
+    "bvn": 36921576307,
+    "gender": "male",
+    "maritalStatus": "Separated",
+    "children": "None",
+    "typeOfResidence": "Rented Apartment",
+    "levelOfEducation": "HND",
+    "employmentStatus": "Self-employed",
+    "sectorOfEmployment": "Education",
+    "durationOfEmployment": "6 months",
+    "officeEmail": "headboyle@oulu.com",
+    "monthlyIncome": "₦280316.00 - ₦1143161.00",
+    "loanRepayment": 106659,
+    "twitter": "@632",
+    "facebook": "Mcconnell Woods",
+    "instagram": "@648",
+    "guarantors": [
+      {
+        "guarantorFullName": "Hope Mccarthy",
+        "guarantorPhoneNumber": 7188071944,
+        "guarantorEmailAddress": "hopemccarthy@oulu.com",
+        "guarantorRelationship": "Parent"
+      },
+      {
+        "guarantorFullName": "Branch Harper",
+        "guarantorPhoneNumber": 8935849842,
+        "guarantorEmailAddress": "branchharper@oulu.com",
+        "guarantorRelationship": "Parent"
+      }
+    ]
+  },
+  {
+    "id": "697637e38ad2ec29bf27c09d",
+    "createdAt": "2022-09-Thursday",
+    "status": "pending",
+    "organization": "cupidatat pariatur",
+    "fullName": "Tamra Cummings",
+    "phoneNumber": 8741034006,
+    "emailAddress": "tamracummings@oulu.com",
+    "bvn": 97942087926,
+    "gender": "female",
+    "maritalStatus": "Single",
+    "children": "3+",
+    "typeOfResidence": "Owned House",
+    "levelOfEducation": "B.Sc",
+    "employmentStatus": "Unemployed",
+    "sectorOfEmployment": "Logistics",
+    "durationOfEmployment": "5 years",
+    "officeEmail": "tamracummings@oulu.com",
+    "monthlyIncome": "₦254586.00 - ₦736100.00",
+    "loanRepayment": 135745,
+    "twitter": "@13",
+    "facebook": "Louella Cortez",
+    "instagram": "@973",
+    "guarantors": [
+      {
+        "guarantorFullName": "Freda Pugh",
+        "guarantorPhoneNumber": 7502033692,
+        "guarantorEmailAddress": "fredapugh@oulu.com",
+        "guarantorRelationship": "Brother"
+      },
+      {
+        "guarantorFullName": "Courtney George",
+        "guarantorPhoneNumber": 8932670096,
+        "guarantorEmailAddress": "courtneygeorge@oulu.com",
+        "guarantorRelationship": "Spouse"
+      }
+    ]
+  },
+  {
+    "id": "697637e3c57c3133bb859360",
+    "createdAt": "2024-06-Monday",
+    "status": "blacklisted",
+    "organization": "eiusmod ex",
+    "fullName": "Booker Best",
+    "phoneNumber": 7761103204,
+    "emailAddress": "bookerbest@oulu.com",
+    "bvn": 64319899417,
+    "gender": "male",
+    "maritalStatus": "Married",
+    "children": "None",
+    "typeOfResidence": "Rented Apartment",
+    "levelOfEducation": "OND",
+    "employmentStatus": "Self-employed",
+    "sectorOfEmployment": "Oil & Gas",
+    "durationOfEmployment": "3 years",
+    "officeEmail": "bookerbest@oulu.com",
+    "monthlyIncome": "₦387496.00 - ₦416920.00",
+    "loanRepayment": 47042,
+    "twitter": "@913",
+    "facebook": "Beard Kramer",
+    "instagram": "@549",
+    "guarantors": [
+      {
+        "guarantorFullName": "Farmer Orr",
+        "guarantorPhoneNumber": 8380431169,
+        "guarantorEmailAddress": "farmerorr@oulu.com",
+        "guarantorRelationship": "Colleague"
+      },
+      {
+        "guarantorFullName": "Mary Powers",
+        "guarantorPhoneNumber": 7132269718,
+        "guarantorEmailAddress": "marypowers@oulu.com",
+        "guarantorRelationship": "Colleague"
+      }
+    ]
+  },
+  {
+    "id": "697637e31d04f885cd2cd1c8",
+    "createdAt": "2025-12-Friday",
+    "status": "active",
+    "organization": "in minim",
+    "fullName": "Gillespie Knapp",
+    "phoneNumber": 7625566176,
+    "emailAddress": "gillespieknapp@oulu.com",
+    "bvn": 72945236249,
+    "gender": "male",
+    "maritalStatus": "Divorced",
+    "children": 2,
+    "typeOfResidence": "Parent’s Apartment",
+    "levelOfEducation": "OND",
+    "employmentStatus": "Self-employed",
+    "sectorOfEmployment": "FinTech",
+    "durationOfEmployment": "1 year",
+    "officeEmail": "gillespieknapp@oulu.com",
+    "monthlyIncome": "₦313205.00 - ₦953658.00",
+    "loanRepayment": 43702,
+    "twitter": "@728",
+    "facebook": "Jimenez Short",
+    "instagram": "@751",
+    "guarantors": [
+      {
+        "guarantorFullName": "Castaneda Trujillo",
+        "guarantorPhoneNumber": 8453917619,
+        "guarantorEmailAddress": "castanedatrujillo@oulu.com",
+        "guarantorRelationship": "Colleague"
+      },
+      {
+        "guarantorFullName": "Norma Summers",
+        "guarantorPhoneNumber": 8109327496,
+        "guarantorEmailAddress": "normasummers@oulu.com",
+        "guarantorRelationship": "Colleague"
+      }
+    ]
+  },
+  {
+    "id": "697637e35897b6a09a3781a8",
+    "createdAt": "2023-10-Wednesday",
+    "status": "inactive",
+    "organization": "veniam ad",
+    "fullName": "Tamika Carr",
+    "phoneNumber": 7900927218,
+    "emailAddress": "tamikacarr@oulu.com",
+    "bvn": 56149049353,
+    "gender": "female",
+    "maritalStatus": "Married",
+    "children": 2,
+    "typeOfResidence": "Parent’s Apartment",
+    "levelOfEducation": "HND",
+    "employmentStatus": "Self-employed",
+    "sectorOfEmployment": "Telecoms",
+    "durationOfEmployment": "3 years",
+    "officeEmail": "tamikacarr@oulu.com",
+    "monthlyIncome": "₦273178.00 - ₦1057269.00",
+    "loanRepayment": 61312,
+    "twitter": "@420",
+    "facebook": "Mclean Wiggins",
+    "instagram": "@495",
+    "guarantors": [
+      {
+        "guarantorFullName": "Scott Holman",
+        "guarantorPhoneNumber": 7086913260,
+        "guarantorEmailAddress": "scottholman@oulu.com",
+        "guarantorRelationship": "Friend"
+      },
+      {
+        "guarantorFullName": "Shelly Cleveland",
+        "guarantorPhoneNumber": 8063780412,
+        "guarantorEmailAddress": "shellycleveland@oulu.com",
+        "guarantorRelationship": "Sister"
+      }
+    ]
+  },
+  {
+    "id": "697637e3293ef0348566401b",
+    "createdAt": "2025-08-Sunday",
+    "status": "active",
+    "organization": "eiusmod et",
+    "fullName": "Wall Wagner",
+    "phoneNumber": 9073570453,
+    "emailAddress": "wallwagner@oulu.com",
+    "bvn": 80823885197,
+    "gender": "male",
+    "maritalStatus": "Married",
+    "children": "3+",
+    "typeOfResidence": "Rented Apartment",
+    "levelOfEducation": "OND",
+    "employmentStatus": "Employed",
+    "sectorOfEmployment": "Telecoms",
+    "durationOfEmployment": "6 months",
+    "officeEmail": "wallwagner@oulu.com",
+    "monthlyIncome": "₦324487.00 - ₦996307.00",
+    "loanRepayment": 181193,
+    "twitter": "@110",
+    "facebook": "Cindy Price",
+    "instagram": "@230",
+    "guarantors": [
+      {
+        "guarantorFullName": "Bullock Middleton",
+        "guarantorPhoneNumber": 8573330752,
+        "guarantorEmailAddress": "bullockmiddleton@oulu.com",
+        "guarantorRelationship": "Parent"
+      },
+      {
+        "guarantorFullName": "Waters Lindsay",
+        "guarantorPhoneNumber": 7595712132,
+        "guarantorEmailAddress": "waterslindsay@oulu.com",
+        "guarantorRelationship": "Spouse"
+      }
+    ]
+  },
+  {
+    "id": "697637e38a2c2f6519c49ada",
+    "createdAt": "2025-04-Wednesday",
+    "status": "pending",
+    "organization": "anim aliqua",
+    "fullName": "Allie Roach",
+    "phoneNumber": 7614334985,
+    "emailAddress": "allieroach@oulu.com",
+    "bvn": 45092407569,
+    "gender": "female",
+    "maritalStatus": "Separated",
+    "children": 2,
+    "typeOfResidence": "Parent’s Apartment",
+    "levelOfEducation": "PhD",
+    "employmentStatus": "Self-employed",
+    "sectorOfEmployment": "Logistics",
+    "durationOfEmployment": "5 years",
+    "officeEmail": "allieroach@oulu.com",
+    "monthlyIncome": "₦367438.00 - ₦783397.00",
+    "loanRepayment": 21306,
+    "twitter": "@816",
+    "facebook": "Dena Booth",
+    "instagram": "@397",
+    "guarantors": [
+      {
+        "guarantorFullName": "Norman Randall",
+        "guarantorPhoneNumber": 9015446483,
+        "guarantorEmailAddress": "normanrandall@oulu.com",
+        "guarantorRelationship": "Sister"
+      },
+      {
+        "guarantorFullName": "Dolores Oliver",
+        "guarantorPhoneNumber": 7348670344,
+        "guarantorEmailAddress": "doloresoliver@oulu.com",
+        "guarantorRelationship": "Sister"
+      }
+    ]
+  },
+  {
+    "id": "697637e3b8be214756945c08",
+    "createdAt": "2022-07-Sunday",
+    "status": "pending",
+    "organization": "eu irure",
+    "fullName": "Leanna Green",
+    "phoneNumber": 7219948506,
+    "emailAddress": "leannagreen@oulu.com",
+    "bvn": 77506004610,
+    "gender": "female",
+    "maritalStatus": "Married",
+    "children": "None",
+    "typeOfResidence": "Owned House",
+    "levelOfEducation": "B.Sc",
+    "employmentStatus": "Unemployed",
+    "sectorOfEmployment": "Oil & Gas",
+    "durationOfEmployment": "2 years",
+    "officeEmail": "leannagreen@oulu.com",
+    "monthlyIncome": "₦376745.00 - ₦838932.00",
+    "loanRepayment": 144524,
+    "twitter": "@718",
+    "facebook": "Herrera Love",
+    "instagram": "@217",
+    "guarantors": [
+      {
+        "guarantorFullName": "Livingston Williams",
+        "guarantorPhoneNumber": 7878251309,
+        "guarantorEmailAddress": "livingstonwilliams@oulu.com",
+        "guarantorRelationship": "Colleague"
+      },
+      {
+        "guarantorFullName": "Liliana Sullivan",
+        "guarantorPhoneNumber": 8126364131,
+        "guarantorEmailAddress": "lilianasullivan@oulu.com",
+        "guarantorRelationship": "Parent"
+      }
+    ]
+  },
+  {
+    "id": "697637e365b0d4d3d419af36",
+    "createdAt": "2022-03-Tuesday",
+    "status": "blacklisted",
+    "organization": "incididunt labore",
+    "fullName": "Rene Lancaster",
+    "phoneNumber": 7685772892,
+    "emailAddress": "renelancaster@oulu.com",
+    "bvn": 97160440029,
+    "gender": "female",
+    "maritalStatus": "Married",
+    "children": "3+",
+    "typeOfResidence": "Rented Apartment",
+    "levelOfEducation": "B.Sc",
+    "employmentStatus": "Employed",
+    "sectorOfEmployment": "Logistics",
+    "durationOfEmployment": "1 year",
+    "officeEmail": "renelancaster@oulu.com",
+    "monthlyIncome": "₦238307.00 - ₦448741.00",
+    "loanRepayment": 61385,
+    "twitter": "@148",
+    "facebook": "Aguirre Velasquez",
+    "instagram": "@527",
+    "guarantors": [
+      {
+        "guarantorFullName": "Dale Dean",
+        "guarantorPhoneNumber": 7835488457,
+        "guarantorEmailAddress": "daledean@oulu.com",
+        "guarantorRelationship": "Brother"
+      },
+      {
+        "guarantorFullName": "Ines Kane",
+        "guarantorPhoneNumber": 7559534926,
+        "guarantorEmailAddress": "ineskane@oulu.com",
+        "guarantorRelationship": "Colleague"
+      }
+    ]
+  },
+  {
+    "id": "697637e377227fc3253628c5",
+    "createdAt": "2024-08-Saturday",
+    "status": "active",
+    "organization": "magna veniam",
+    "fullName": "Ramos Boone",
+    "phoneNumber": 8160952607,
+    "emailAddress": "ramosboone@oulu.com",
+    "bvn": 58758214015,
+    "gender": "male",
+    "maritalStatus": "Single",
+    "children": 1,
+    "typeOfResidence": "Owned House",
+    "levelOfEducation": "OND",
+    "employmentStatus": "Unemployed",
+    "sectorOfEmployment": "Logistics",
+    "durationOfEmployment": "3 years",
+    "officeEmail": "ramosboone@oulu.com",
+    "monthlyIncome": "₦362253.00 - ₦950400.00",
+    "loanRepayment": 40535,
+    "twitter": "@902",
+    "facebook": "Higgins Sharp",
+    "instagram": "@421",
+    "guarantors": [
+      {
+        "guarantorFullName": "Cervantes Goodman",
+        "guarantorPhoneNumber": 7646820722,
+        "guarantorEmailAddress": "cervantesgoodman@oulu.com",
+        "guarantorRelationship": "Colleague"
+      },
+      {
+        "guarantorFullName": "Klein Maldonado",
+        "guarantorPhoneNumber": 8736469705,
+        "guarantorEmailAddress": "kleinmaldonado@oulu.com",
+        "guarantorRelationship": "Brother"
+      }
+    ]
+  },
+  {
+    "id": "697637e3b3205dbb8b61b24f",
+    "createdAt": "2025-07-Tuesday",
+    "status": "inactive",
+    "organization": "veniam ea",
+    "fullName": "Keisha Morse",
+    "phoneNumber": 7703338219,
+    "emailAddress": "keishamorse@oulu.com",
+    "bvn": 10914196040,
+    "gender": "female",
+    "maritalStatus": "Separated",
+    "children": "3+",
+    "typeOfResidence": "Rented Apartment",
+    "levelOfEducation": "B.Sc",
+    "employmentStatus": "Unemployed",
+    "sectorOfEmployment": "Oil & Gas",
+    "durationOfEmployment": "6 months",
+    "officeEmail": "keishamorse@oulu.com",
+    "monthlyIncome": "₦208227.00 - ₦593341.00",
+    "loanRepayment": 34833,
+    "twitter": "@963",
+    "facebook": "Justice Rosales",
+    "instagram": "@258",
+    "guarantors": [
+      {
+        "guarantorFullName": "Lawrence Savage",
+        "guarantorPhoneNumber": 7962820838,
+        "guarantorEmailAddress": "lawrencesavage@oulu.com",
+        "guarantorRelationship": "Sister"
+      },
+      {
+        "guarantorFullName": "Bolton Ramsey",
+        "guarantorPhoneNumber": 7099802653,
+        "guarantorEmailAddress": "boltonramsey@oulu.com",
+        "guarantorRelationship": "Brother"
+      }
+    ]
+  },
+  {
+    "id": "697637e3cbebde73fa419e94",
+    "createdAt": "2022-01-Thursday",
+    "status": "active",
+    "organization": "cupidatat magna",
+    "fullName": "Sutton Nelson",
+    "phoneNumber": 8483006816,
+    "emailAddress": "suttonnelson@oulu.com",
+    "bvn": 27882363661,
+    "gender": "male",
+    "maritalStatus": "Married",
+    "children": 2,
+    "typeOfResidence": "Rented Apartment",
+    "levelOfEducation": "PhD",
+    "employmentStatus": "Self-employed",
+    "sectorOfEmployment": "Health",
+    "durationOfEmployment": "5 years",
+    "officeEmail": "suttonnelson@oulu.com",
+    "monthlyIncome": "₦264901.00 - ₦882640.00",
+    "loanRepayment": 38794,
+    "twitter": "@26",
+    "facebook": "Meghan Jimenez",
+    "instagram": "@800",
+    "guarantors": [
+      {
+        "guarantorFullName": "Ofelia Taylor",
+        "guarantorPhoneNumber": 8184896442,
+        "guarantorEmailAddress": "ofeliataylor@oulu.com",
+        "guarantorRelationship": "Colleague"
+      },
+      {
+        "guarantorFullName": "Tyler Nash",
+        "guarantorPhoneNumber": 8608508809,
+        "guarantorEmailAddress": "tylernash@oulu.com",
+        "guarantorRelationship": "Sister"
+      }
+    ]
+  },
+  {
+    "id": "697637e350a685c6f99cdeee",
+    "createdAt": "2024-02-Saturday",
+    "status": "inactive",
+    "organization": "velit mollit",
+    "fullName": "Jillian Oneal",
+    "phoneNumber": 7365174365,
+    "emailAddress": "jillianoneal@oulu.com",
+    "bvn": 27742300671,
+    "gender": "female",
+    "maritalStatus": "Divorced",
+    "children": 2,
+    "typeOfResidence": "Company Housing",
+    "levelOfEducation": "OND",
+    "employmentStatus": "Unemployed",
+    "sectorOfEmployment": "Education",
+    "durationOfEmployment": "2 years",
+    "officeEmail": "jillianoneal@oulu.com",
+    "monthlyIncome": "₦311647.00 - ₦1165504.00",
+    "loanRepayment": 142032,
+    "twitter": "@220",
+    "facebook": "Browning Roberts",
+    "instagram": "@240",
+    "guarantors": [
+      {
+        "guarantorFullName": "Opal Koch",
+        "guarantorPhoneNumber": 7066537727,
+        "guarantorEmailAddress": "opalkoch@oulu.com",
+        "guarantorRelationship": "Parent"
+      },
+      {
+        "guarantorFullName": "Marietta Holmes",
+        "guarantorPhoneNumber": 7999845447,
+        "guarantorEmailAddress": "mariettaholmes@oulu.com",
+        "guarantorRelationship": "Friend"
+      }
+    ]
+  },
+  {
+    "id": "697637e395e473d880256524",
+    "createdAt": "2023-04-Friday",
+    "status": "pending",
+    "organization": "proident ipsum",
+    "fullName": "Monique Levy",
+    "phoneNumber": 7515139521,
+    "emailAddress": "moniquelevy@oulu.com",
+    "bvn": 50726077654,
+    "gender": "female",
+    "maritalStatus": "Separated",
+    "children": "3+",
+    "typeOfResidence": "Company Housing",
+    "levelOfEducation": "HND",
+    "employmentStatus": "Self-employed",
+    "sectorOfEmployment": "Health",
+    "durationOfEmployment": "2 years",
+    "officeEmail": "moniquelevy@oulu.com",
+    "monthlyIncome": "₦367899.00 - ₦517762.00",
+    "loanRepayment": 167809,
+    "twitter": "@599",
+    "facebook": "Lester Duncan",
+    "instagram": "@725",
+    "guarantors": [
+      {
+        "guarantorFullName": "Mcclain Kelley",
+        "guarantorPhoneNumber": 7657521071,
+        "guarantorEmailAddress": "mcclainkelley@oulu.com",
+        "guarantorRelationship": "Parent"
+      },
+      {
+        "guarantorFullName": "Magdalena Elliott",
+        "guarantorPhoneNumber": 8732530782,
+        "guarantorEmailAddress": "magdalenaelliott@oulu.com",
+        "guarantorRelationship": "Spouse"
+      }
+    ]
+  }
+]

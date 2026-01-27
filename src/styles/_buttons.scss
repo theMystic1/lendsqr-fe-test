@@ -51,6 +51,16 @@ $btn-variants: (
     border: transparent,
   ),
 
+  primary-outline: (
+    bg: transparent,
+    border: t.s(0.2) solid color.$cyan-color,
+    text: color.$cyan-color,
+  ),
+  danger-outline: (
+    bg: transparent,
+    border: t.s(0.2) solid color.$red-600,
+    text: color.$red-600,
+  ),
   pending: pill(color.$yellow-500),
   danger: pill(color.$red-600),
   active: pill(color.$green-500),
@@ -68,6 +78,7 @@ $btn-variants: (
   width: v($variant, width);
   border: v($variant, border);
   border-radius: v($variant, radius);
+  padding: t.s(2) t.s(3);
 
   &:hover {
     filter: brightness(0.95);

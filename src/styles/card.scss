@@ -29,7 +29,7 @@ $icon-themes: (
 
 .card {
   background: color.$white-color;
-
+  z-index: 50;
   border-radius: t.s(1);
   box-shadow: t.s(1) t.s(1) t.s(5) t.s(0) color.$shadow-color;
   padding: t.s(4);
@@ -52,12 +52,22 @@ $icon-themes: (
     }
   }
 
+  &__tall {
+    min-height: t.s(192);
+  }
+
+  &__border {
+    border: t.s(0.2) solid rgba(color.$gray-blue-400, 0.14);
+  }
+
   /* Card sections */
   &__header {
     display: flex;
+    flex-direction: column;
     align-items: flex-start;
-    justify-content: space-between;
-    gap: t.s(3);
+    // justify-content: space-between;
+    // gap: ;
+    gap: t.s(1);
     margin-bottom: t.s(3);
     font-weight: t.fw(semibold);
   }
@@ -98,7 +108,7 @@ $icon-themes: (
 
     @include icon-badge(theme(primary));
 
-    svg {
+    img {
       width: t.s(5);
       height: t.s(5);
       fill: currentColor;

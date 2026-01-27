@@ -1,0 +1,33 @@
+import type { FormatNumberOptions } from "../types/type";
+
+export const capitalizeFirst = (input: string): string => {
+  const s = input.trim();
+  if (!s) return "";
+  return s[0].toUpperCase() + s.slice(1);
+};
+
+export function formatNumber(
+  value: number | string | null | undefined,
+  opts: FormatNumberOptions = {},
+): string {
+  const n =
+    typeof value === "number"
+      ? value
+      : typeof value === "string"
+        ? Number(value.replace(/,/g, ""))
+        : NaN;
+
+  if (!Number.isFinite(n)) return "";
+
+  const { locale = "en-NG", decimals, currency, compact = false } = opts;
+
+  const nf = new Intl.NumberFormat(locale, {
+    ...(currency ? { style: "currency", currency } : {}),
+    ...(typeof decimals === "number"
+      ? { minimumFractionDigits: decimals, maximumFractionDigits: decimals }
+      : {}),
+    ...(compact ? { notation: "compact", compactDisplay: "short" } : {}),
+  });
+
+  return nf.format(n);
+}
