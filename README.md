@@ -1,73 +1,90 @@
-# React + TypeScript + Vite
+# Lendsqr Admin Dashboard (Frontend) — Vite + React + TS + SCSS
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A Lendsqr-style admin dashboard frontend built with **Vite + React + TypeScript**, using an SCSS token system + utility classes, and consuming a **Node/Express JSON API** (no DB) for users listing, filtering, search, pagination, and mutations (activate/blacklist).
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
 
-## React Compiler
+### UI / UX
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- Standard admin layout: **Top Nav + Sidebar + Main content (Outlet)**
+- Responsive table container (horizontal scroll on small screens)
+- Mobile-only slide-in sidebar (left drawer), scrollable with max-height
+- Reusable UI components: **Card**, **Button variants**, **Table family**, **Skeleton loader**, **Status pill**
+- Row actions menu (three dots) rendered via **Portal** for proper stacking above table
 
-## Expanding the ESLint configuration
+### Data / Ops
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- Users list with:
+  - Pagination (`page`, `pageSize`)
+  - Full-text Search (`search`) across **all fields** (name, email, phone, nested guarantors, etc.)
+  - Filters:
+    - `organization`, `userName`, `emailAddress`, `phoneNumber`, `status`, `date`
+  - Sort (optional): `sortBy`, `sortDir`
+- User mutation:
+  - Activate / Deactivate
+  - Blacklist / Unblacklist
+- Stats cards (from `/stats`)
+- Filter dropdown options (from `/filters`)
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+### Notifications
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+- `react-hot-toast` for load/success/error messages
+- `<Toaster />` mounted once at app root
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+---
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Tech Stack
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+- React 19 + TypeScript
+- Vite
+- React Router
+- SCSS (Dart Sass) with `@use`
+- Material UI Icons (`@mui/icons-material`)
+- react-hot-toast
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+---
+
+## Project Structure (recommended)
+
+```txt
+src/
+  components/
+    dashboard/
+      pagination/
+      userTable/
+    ui/
+      button/
+      card/
+      table/
+      loading/
+  hooks/
+    useCustomParam.ts
+  layouts/
+    DashboardLayout.tsx
+  pages/
+    Login.tsx
+    Users.tsx
+    UserDetails.tsx
+    NotFound.tsx
+  server/
+    api.ts
+  styles/
+    variables/
+      tokens.scss
+      colors.scss
+    utilities/
+      layout.scss      # flex/grid/gap utilities
+    components/
+      table.scss
+      card.scss
+      button.scss
+    index.scss
+  types/
+    type.ts
+  utils/
+    helpers.ts
+main.tsx
+App.tsx
 ```

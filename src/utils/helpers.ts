@@ -49,3 +49,11 @@ export const formatDate = (date: string | Date | number): string => {
 
   return formatter.format(dateObj);
 };
+
+export const setLocalStorage = (key: string, value: string) => {
+  localStorage.setItem(key, value);
+};
+
+export const getToken = () => {
+  return localStorage.getItem("ADMIN_TOKEN");
+};

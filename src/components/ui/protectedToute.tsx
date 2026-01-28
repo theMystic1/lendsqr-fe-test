@@ -1,9 +1,10 @@
 // src/routes/ProtectedRoute.tsx
 import { Navigate, Outlet, useLocation } from "react-router-dom";
+import { getToken } from "../../utils/helpers";
 
 export default function ProtectedRoute() {
   const location = useLocation();
-  const token = localStorage.getItem("ADMIN_TOKEN");
+  const token = getToken();
 
   if (!token) {
     return <Navigate to="/login" replace state={{ from: location }} />;

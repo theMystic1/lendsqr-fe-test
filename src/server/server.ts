@@ -40,7 +40,7 @@ async function request<T>(
   return (await parseBody(res)) as T;
 }
 
-function buildUsersQuery(params: ListUsersParams = {}) {
+export function buildUsersQuery(params: ListUsersParams = {}) {
   const sp = new URLSearchParams();
 
   if (params.page) sp.set("page", String(params.page));
