@@ -55,7 +55,7 @@ const getPageTokens = (current: number, totalPages: number): PageToken[] => {
 };
 
 const Pagination = ({ page, pageSize, total, totalPages }: Props) => {
-  const { getParam, updateQuery } = useCustomParams();
+  const { getParam, updateMany } = useCustomParams();
 
   const currentPage = Number(getParam("page") ?? page ?? 1);
   const curPageSize = Number(getParam("pageSize") ?? pageSize ?? 10);
@@ -63,24 +63,22 @@ const Pagination = ({ page, pageSize, total, totalPages }: Props) => {
   const safeTotalPages = Math.max(1, totalPages || 1);
   const safePage = Math.max(1, Math.min(currentPage || 1, safeTotalPages));
 
+  const goToPage = (next: number) => {
+    const p = Math.max(1, Math.min(next, safeTotalPages));
+    updateMany({ page: String(p) });
+  };
+
   const pageTokens = useMemo(
     () => getPageTokens(safePage, safeTotalPages),
     [safePage, safeTotalPages],
   );
 
-  const goToPage = (next: number) => {
-    const p = Math.max(1, Math.min(next, safeTotalPages));
-    updateQuery("page", String(p));
-  };
-
   const onChangePageSize = (value: string) => {
-    console.log(value);
-    updateQuery("pageSize", value);
-    // updateQuery("page", "1"); // reset page on pageSize change
+    updateMany({
+      pageSize: value,
+      page: "1", // ✅ reset to page 1 in the same update
+    });
   };
-
-  // const start = total === 0 ? 0 : (safePage - 1) * curPageSize + 1;
-  // const end = Math.min(safePage * curPageSize, total);
 
   return (
     <div className=" w-full pagination">
@@ -98,6 +96,7 @@ const Pagination = ({ page, pageSize, total, totalPages }: Props) => {
           <option value="50">50</option>
           <option value="100">100</option>
         </select>
+
         <p>out of {total} </p>
       </div>
 

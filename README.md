@@ -88,3 +88,84 @@ src/
 main.tsx
 App.tsx
 ```
+
+## Unit Tests (Vitest) — Positive + Negative Scenarios
+
+This project includes **unit tests for the frontend API client** (query builder + request wrapper). The goal is to verify both:
+
+- **Positive scenarios**: correct query construction, successful fetch flows, correct JSON parsing.
+- **Negative scenarios**: non-2xx responses throw a typed `HttpError` with the backend message (JSON or text).
+
+### What we tested
+
+**Query building**
+
+- Builds `/users` query string with `page`, `pageSize`, `search`, `sortBy`, `sortDir`
+- Includes filter fields only when provided
+- **Does not include** empty/undefined filter keys
+
+  **Successful requests**
+
+- `listUsers()` calls `fetch()` with the correct URL + query string
+- `login()` and `updateUser()` send JSON with `Content-Type: application/json`
+
+  **Error handling (negative tests)**
+
+- When backend returns `{ error: "..." }` with `application/json`, client throws `HttpError` with:
+  - `message = backend error`
+  - `status = HTTP status`
+  - `data = parsed JSON`
+
+- When backend returns `text/plain`, client throws `HttpError` with:
+  - `message = returned text`
+  - `status = HTTP status`
+
+---
+
+### Setup
+
+Install dev dependencies (if not already):
+
+```bash
+npm i -D vitest jsdom
+```
+
+Add a test script to `package.json`:
+
+```json
+{
+  "scripts": {
+    "test": "vitest"
+  }
+}
+```
+
+> If you use `vite.config.ts`, ensure Vitest config is inside `defineConfig({ test: {...} })` (Vitest v4+ expects that config shape).
+
+---
+
+### Test File Location
+
+Create:
+
+```txt
+src/api.test.ts
+```
+
+### Running Tests
+
+```bash
+npm run test
+```
+
+Vitest will watch by default. Quit with `q`.
+
+---
+
+### Notes / Common Pitfalls
+
+- **BASE_URL becomes `undefined` in tests** if `VITE_API_URL` isn’t set _before importing_ the module.
+  - That’s why tests use: `vi.stubEnv("VITE_API_URL", "...")` **before** `import()`.
+
+- If `instanceof HttpError` fails, it usually means `HttpError` is imported from **two different module instances**.
+  - Keep `HttpError` imported from **one canonical path** across the app.

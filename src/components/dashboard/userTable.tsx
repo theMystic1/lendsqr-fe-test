@@ -37,7 +37,7 @@ const columns: TableHeader[] = [
 // phone, date, email
 
 export const UsersTable = ({
-  users,
+  users = [],
   setRefetchKey,
 }: {
   users: User[];
