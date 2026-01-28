@@ -10,18 +10,16 @@ export type Guarantor = {
 export type ListUsersParams = {
   page?: number;
   pageSize?: number;
-
-  // global search (optional)
+  search?: string;
   q?: string;
 
-  // UI filter (matches your screenshot)
   filters?: {
     organization?: string;
     userName?: string;
     emailAddress?: string;
     phoneNumber?: string | number;
     status?: string;
-    date?: string; // "YYYY-MM-DD"
+    date?: string;
   };
 
   sortBy?: keyof User;
@@ -39,10 +37,10 @@ export type TableHeader = {
 export type User = {
   id: string;
   fullName: string;
-  userName: string; // ✅
-  organization: string; // ✅
-  status: UserStatus; // ✅
-  createdAt: string; // ✅ ISO date string
+  userName: string;
+  organization: string;
+  status: UserStatus;
+  createdAt: string;
 
   phoneNumber: number;
   emailAddress: string;
@@ -71,6 +69,7 @@ export type User = {
 export type Childrentype = {
   children: React.ReactNode;
   onClick?: (e?: React.MouseEvent) => void;
+  className?: string;
 };
 
 export type FormatNumberOptions = {

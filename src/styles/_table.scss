@@ -6,15 +6,17 @@
   font-size: t.s(3);
   text-align: start;
   border-collapse: collapse;
-  z-index: 50;
+  z-index: 0;
+  // min-width: 950px;
 
   &__th,
   &__td {
     text-align: start;
-    padding: t.s(4);
+    padding: t.s(4) t.s(3);
     border-bottom: t.s(0.2) solid c.$gray-blue-500; // ✅ visible separator
     // display: flex;
     position: relative;
+    // z-index: 0;
 
     img {
       width: t.s(4);
@@ -30,8 +32,39 @@
     cursor: pointer;
   }
 
+  thead {
+    position: relative;
+    // z-index: 0;
+  }
+
+  tr {
+    z-index: 0;
+  }
+
   // optional: remove border on last row
   tbody tr:last-child &__td {
     border-bottom: 0;
+  }
+}
+
+//
+
+@media (max-width: 1200px) {
+  .date {
+    display: none !important;
+  }
+}
+@media (max-width: 1024px) {
+  .phone {
+    display: none !important;
+  }
+}
+@media (max-width: 800px) {
+  // .table {
+  //   max-width: 600px;
+  // }
+
+  .email {
+    display: none !important;
   }
 }

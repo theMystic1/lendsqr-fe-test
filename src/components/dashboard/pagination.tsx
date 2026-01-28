@@ -1,71 +1,139 @@
 import { ChevronLeft, ChevronRight } from "@mui/icons-material";
+import { useMemo } from "react";
 import { useCustomParams } from "../../hooks/useCustomParam";
 
-const Pagination = ({
-  page,
-  pageSize,
-  total,
-  totalPages,
-}: {
+type Props = {
   page: number;
   pageSize: number;
   total: number;
   totalPages: number;
-}) => {
-  const pages = Array.from({ length: totalPages }, (_, i) => i + 1);
+};
 
+type PageToken = number | "…";
+
+const getPageTokens = (current: number, totalPages: number): PageToken[] => {
+  const clamp = (n: number) => Math.max(1, Math.min(n, totalPages));
+  const cur = clamp(current);
+
+  if (totalPages <= 9) {
+    return Array.from({ length: totalPages }, (_, i) => i + 1);
+  }
+
+  const head = [1, 2, 3];
+  const tail = [totalPages - 2, totalPages - 1, totalPages];
+
+  let midStart = cur - 1;
+  let midEnd = cur + 1;
+
+  if (midStart < 4) {
+    midStart = 4;
+    midEnd = 6;
+  }
+  if (midEnd > totalPages - 3) {
+    midEnd = totalPages - 3;
+    midStart = totalPages - 5;
+  }
+
+  const middle: number[] = [];
+  for (let p = midStart; p <= midEnd; p++) middle.push(p);
+
+  const tokens: PageToken[] = [...head];
+
+  if (middle[0] > head[head.length - 1] + 1) tokens.push("…");
+
+  for (const p of middle) {
+    if (!tokens.includes(p)) tokens.push(p);
+  }
+
+  if (tail[0] > (tokens[tokens.length - 1] as number) + 1) tokens.push("…");
+
+  for (const p of tail) {
+    if (!tokens.includes(p)) tokens.push(p);
+  }
+
+  return tokens;
+};
+
+const Pagination = ({ page, pageSize, total, totalPages }: Props) => {
   const { getParam, updateQuery } = useCustomParams();
 
   const currentPage = Number(getParam("page") ?? page ?? 1);
   const curPageSize = Number(getParam("pageSize") ?? pageSize ?? 10);
 
-  const handlePage = (act: "inc" | "dec") => {
-    const next =
-      act === "inc"
-        ? Math.min(currentPage + 1, totalPages)
-        : Math.max(currentPage - 1, 1);
+  const safeTotalPages = Math.max(1, totalPages || 1);
+  const safePage = Math.max(1, Math.min(currentPage || 1, safeTotalPages));
 
-    updateQuery("page", String(next));
+  const pageTokens = useMemo(
+    () => getPageTokens(safePage, safeTotalPages),
+    [safePage, safeTotalPages],
+  );
+
+  const goToPage = (next: number) => {
+    const p = Math.max(1, Math.min(next, safeTotalPages));
+    updateQuery("page", String(p));
   };
 
+  const onChangePageSize = (value: string) => {
+    console.log(value);
+    updateQuery("pageSize", value);
+    // updateQuery("page", "1"); // reset page on pageSize change
+  };
+
+  // const start = total === 0 ? 0 : (safePage - 1) * curPageSize + 1;
+  // const end = Math.min(safePage * curPageSize, total);
+
   return (
-    <div className="flex items-center justify-between w-full">
+    <div className=" w-full pagination">
       <div className="flex items-center gap-2">
-        <p>showing</p>
+        <p>Showing</p>
+
         <select
           name="perPage"
-          id=""
           className="select"
-          onChange={(e) => updateQuery("pageSize", e.target.value)}
+          onChange={(e) => onChangePageSize(e.target.value)}
           value={curPageSize}
         >
-          {/* <option value="5">5</option> */}
-          <option value="10">10 </option>
-          <option value="20">20 </option>
-          <option value="50">50 </option>
+          <option value="10">10</option>
+          <option value="20">20</option>
+          <option value="50">50</option>
+          <option value="100">100</option>
         </select>
-        <p>out of {total}</p>
+        <p>out of {total} </p>
       </div>
+
       <div className="flex items-center gap-2">
         <button
           className="pagiBtn"
-          disabled={currentPage === 1}
-          onClick={() => handlePage("dec")}
+          disabled={safePage === 1}
+          onClick={() => goToPage(safePage - 1)}
+          aria-label="Previous page"
         >
           <ChevronLeft />
         </button>
-        {pages.map((pg, i) => (
-          <p
-            key={i}
-            className={`pagiTxt ${pg === currentPage ? "pagiTxt__active" : ""}`}
-          >
-            {pg}
-          </p>
-        ))}
+
+        {pageTokens.map((t, idx) =>
+          t === "…" ? (
+            <span key={`dots-${idx}`} className="pagiTxt">
+              …
+            </span>
+          ) : (
+            <button
+              key={t}
+              type="button"
+              onClick={() => goToPage(t)}
+              className={`pagiTxt ${t === safePage ? "pagiTxt__active" : ""}`}
+              aria-current={t === safePage ? "page" : undefined}
+            >
+              {t}
+            </button>
+          ),
+        )}
+
         <button
           className="pagiBtn"
-          disabled={currentPage === pages.length}
-          onClick={() => handlePage("inc")}
+          disabled={safePage === safeTotalPages}
+          onClick={() => goToPage(safePage + 1)}
+          aria-label="Next page"
         >
           <ChevronRight />
         </button>

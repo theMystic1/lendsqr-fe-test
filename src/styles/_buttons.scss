@@ -78,7 +78,7 @@ $btn-variants: (
   width: v($variant, width);
   border: v($variant, border);
   border-radius: v($variant, radius);
-  padding: t.s(2) t.s(3);
+  padding: t.s(3) t.s(4);
 
   &:hover {
     filter: brightness(0.95);

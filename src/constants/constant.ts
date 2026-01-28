@@ -142,26 +142,26 @@ export const IMgs = {
 export const stats = [
   {
     title: "Users",
-    variant: "users",
+    variant: "totalUsers",
     icon: twoUser,
 
     value: 40097,
   },
   {
     title: "Active Users",
-    variant: "active",
+    variant: "activeUsers",
     icon: threeUser,
     value: 32040,
   },
   {
     title: "Users with Loans",
-    variant: "loans",
+    variant: "usersWithLoans",
     icon: loansIcon,
     value: 10021,
   },
   {
     title: "Users with Savings",
-    variant: "savings",
+    variant: "usersWithSavings",
     icon: stackIcon,
     value: 40044,
   },

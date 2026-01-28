@@ -1,7 +1,13 @@
-import { Fragment, useEffect, useState } from "react";
+import {
+  Fragment,
+  useEffect,
+  useState,
+  type Dispatch,
+  type SetStateAction,
+} from "react";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import type { User } from "../../types/type";
-import { getUserById } from "../../server/server";
+import { getUserById, updateUser } from "../../server/server";
 import { Skeleton } from "../ui/loading";
 import { Column, Row } from "../ui/filterDrop";
 import CustomBtn from "../ui/button";
@@ -11,11 +17,13 @@ import { det, IMgs } from "../../constants/constant";
 import StarRating from "../ui/ratings";
 import { formatNumber } from "../../utils/helpers";
 import { useCustomParams } from "../../hooks/useCustomParam";
+import toast from "react-hot-toast";
 
 function UserInfo() {
   const { id } = useParams<{ id: string }>();
   const [user, setUser] = useState<User>();
   const [loading, setLoading] = useState(false);
+  const [refetchKey, setRefetchKey] = useState(0);
 
   useEffect(() => {
     const getSingleUser = async () => {
@@ -29,7 +37,7 @@ function UserInfo() {
     };
 
     getSingleUser();
-  }, [id]);
+  }, [id, refetchKey]);
 
   if (loading) return <Skeleton lines={20} />;
 
@@ -38,7 +46,7 @@ function UserInfo() {
       <Row className="justify-start">
         <BackBtn />
       </Row>
-      <Header />
+      <Header user={user!} setRefetchKey={setRefetchKey} />
       <HeaderBanner user={user!} />
       <InfoBanner user={user!} />
     </Column>
@@ -47,13 +55,48 @@ function UserInfo() {
 
 export default UserInfo;
 
-const Header = () => {
+const Header = ({
+  user,
+  setRefetchKey,
+}: {
+  user: User;
+  setRefetchKey?: Dispatch<SetStateAction<number>>;
+}) => {
+  const handleActivation = async () => {
+    toast.loading("updating user....");
+    try {
+      await updateUser(user.id, {
+        status: user?.status === "active" ? "inactive" : "active",
+      });
+      toast.remove();
+      toast.success("User update successful......");
+      setRefetchKey?.((num: number) => num + 1);
+    } catch (error: any) {
+      const err = error.message || "Operation failed";
+
+      toast.remove();
+      toast.error(err);
+    }
+  };
   return (
     <Row className="justify-between  gap-4">
       <h3>User Details</h3>
       <Row className="gap-4">
-        <CustomBtn variant="danger-outline">BLACKLIST USER</CustomBtn>
-        <CustomBtn variant="primary-outline">ACTIVATE USER</CustomBtn>
+        {user?.status === "active" ? (
+          <CustomBtn
+            variant="danger-outline"
+            onClick={() => handleActivation()}
+          >
+            BLACKLIST USER
+          </CustomBtn>
+        ) : (
+          <CustomBtn
+            variant="primary-outline"
+            onClick={() => handleActivation()}
+          >
+            ACTIVATE USER
+          </CustomBtn>
+        )}
       </Row>
     </Row>
   );
@@ -78,8 +121,8 @@ const BackBtn = () => {
 
 const HeaderBanner = ({ user }: { user: User }) => {
   return (
-    <Card className="p-8 relative">
-      <Row className="gap-12 relative">
+    <Card className="p-8 card_once relative">
+      <div className="grid-3 grid place-items-center relative">
         <Row className="gap-2">
           <Row className="userHeader__profilePic justify-center">
             <img src={IMgs.usericon} />
@@ -89,7 +132,7 @@ const HeaderBanner = ({ user }: { user: User }) => {
             <p>{user?.gender}</p>
           </Column>
         </Row>
-        <Column className="items-start gap-0 userHeader__tier p-4">
+        <Column className="items-start gap-0 userHeader__tier p-4 tier2">
           <p>Users tier</p>
           <StarRating readOnly value={2} />
         </Column>
@@ -100,7 +143,7 @@ const HeaderBanner = ({ user }: { user: User }) => {
           </p>
           {/* <StarRating readOnly value={2} /> */}
         </Column>
-      </Row>
+      </div>
       <Row className="absolute bottom-0 userHeader__nav ">
         <NavB />
       </Row>
@@ -109,12 +152,11 @@ const HeaderBanner = ({ user }: { user: User }) => {
 };
 
 const InfoBanner = ({ user }: { user: User }) => {
-  console.log(user);
   return (
     <Card className="p-4 flex flex-col items-start gap-8">
       <Column className=" items-start gap-4 colBorder">
         <h3>Personal Information</h3>
-        <div className="grid grid-5 gap-6">
+        <div className="grid grid-5 gap-6 align-between">
           <LabelInfo label={"FULL NAME"} value={user?.fullName} />
           <LabelInfo
             label={"PHONE NUMBER"}
@@ -156,10 +198,6 @@ const InfoBanner = ({ user }: { user: User }) => {
             label={"loan repayment"}
             value={user?.loanRepayment.toString()}
           />
-          {/* <LabelInfo
-            label={"TYPE OF RESIDENCY"}
-            value={user?.typeOfResidence}
-          /> */}
         </div>
       </Column>
       <Column className=" items-start gap-4 colBorder">
@@ -168,11 +206,6 @@ const InfoBanner = ({ user }: { user: User }) => {
           <LabelInfo label={"Twitter"} value={user?.twitter} />
           <LabelInfo label={"Facebook"} value={user?.facebook.toString()} />
           <LabelInfo label={"Instagram"} value={user?.instagram} />
-
-          {/* <LabelInfo
-            label={"TYPE OF RESIDENCY"}
-            value={user?.typeOfResidence}
-          /> */}
         </div>
       </Column>
       <Column className=" items-start gap-4 colBorder">

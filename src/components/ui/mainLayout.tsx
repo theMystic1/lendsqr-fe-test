@@ -6,6 +6,7 @@ import { sections } from "../../constants/constant";
 import React from "react";
 import UserDetails from "../../pages/usersDetail";
 import Login from "../../pages/login";
+import ProtectedRoute from "./protectedToute";
 
 const MainLayout = () => {
   return (
@@ -15,23 +16,24 @@ const MainLayout = () => {
       <Route path="/login" element={<Login />} />
 
       {/* Layout routes */}
-      <Route element={<DashboardLayout />}>
-        {sections.map((section, i) => (
-          <React.Fragment key={section.title || i}>
-            {section.items.map((item) => (
-              <React.Fragment key={item.name}>
-                <Route path={item.routeUrl} element={<Users />} />
-                <Route
-                  path={`${item.routeUrl}/:id`}
-                  element={<UserDetails />}
-                />
-              </React.Fragment>
-            ))}
-          </React.Fragment>
-        ))}
+      <Route element={<ProtectedRoute />}>
+        <Route element={<DashboardLayout />}>
+          {sections.map((section, i) => (
+            <React.Fragment key={section.title || i}>
+              {section.items.map((item) => (
+                <React.Fragment key={item.name}>
+                  <Route path={item.routeUrl} element={<Users />} />
+                  <Route
+                    path={`${item.routeUrl}/:id`}
+                    element={<UserDetails />}
+                  />
+                </React.Fragment>
+              ))}
+            </React.Fragment>
+          ))}
+        </Route>
       </Route>
 
-      {/* 404 */}
       <Route path="*" element={<NotFound />} />
     </Routes>
   );

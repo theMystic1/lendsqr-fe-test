@@ -1,4 +1,11 @@
-import { useEffect, useState, type ChangeEvent, type ReactNode } from "react";
+import {
+  useEffect,
+  useState,
+  type ChangeEvent,
+  type Dispatch,
+  type ReactNode,
+  type SetStateAction,
+} from "react";
 import CustomBtn from "./button";
 import { getOrganizations } from "../../server/server";
 import { useCustomParams } from "../../hooks/useCustomParam";
@@ -62,7 +69,7 @@ const FilterDropDown = () => {
 
         const res = await getOrganizations();
 
-        setOrgs(res);
+        setOrgs(res.organizations);
       } catch (e) {
         console.error(e);
       } finally {
@@ -182,6 +189,9 @@ export const Input = ({
   values,
   onChange,
   value,
+  required,
+  showPd,
+  onShowPd,
 }: {
   label: string;
   className?: string;
@@ -192,6 +202,9 @@ export const Input = ({
   values?: string[];
   value: string;
   onChange: (e: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => void;
+  required?: boolean;
+  showPd?: boolean;
+  onShowPd?: Dispatch<SetStateAction<boolean>>;
 }) => {
   return (
     <Column>
@@ -218,9 +231,14 @@ export const Input = ({
             placeholder={placeholder}
             onChange={onChange}
             value={value}
+            required={required}
           />
 
-          {type === "password" ? <button className="__btn">SHOW</button> : null}
+          {type === "password" || showPd ? (
+            <button className="__btn" onClick={() => onShowPd?.((p) => !p)}>
+              {showPd ? "HIDE" : "SHOW"}
+            </button>
+          ) : null}
         </div>
       )}
     </Column>

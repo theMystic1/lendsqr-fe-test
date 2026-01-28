@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import type { User } from "../../types/type";
 import { useCustomParams } from "../../hooks/useCustomParam";
-import { listUsers } from "../../server/server";
+import { getStats, listUsers } from "../../server/server";
 import { stats } from "../../constants/constant";
 import { formatNumber } from "../../utils/helpers";
 import { Skeleton } from "../ui/loading";
@@ -26,12 +26,20 @@ const UserPage = () => {
     total: number;
     totalPages: number;
   }>();
+  const [statts, setStats] = useState<{
+    totalUsers: number;
+    activeUsers: number;
+    usersWithLoans: number;
+    usersWithSavings: number;
+  }>();
   const [loading, setLoading] = useState(false);
+  const [refetchKey, setRefetchKey] = useState(0);
 
   const { getParam, getMany } = useCustomParams();
 
   const currentPage = Number(getParam("page") || 1);
   const curPageSize = Number(getParam("pageSize") || 10);
+  const search = getParam("search") || "";
 
   const params = useMemo(
     () =>
@@ -75,10 +83,15 @@ const UserPage = () => {
         const res = await listUsers({
           page: currentPage,
           pageSize: curPageSize,
-          ...(Object.keys(filters).length ? { filters } : {}), // only include if any exists
+          ...(Object.keys(filters).length ? { filters } : {}),
+          ...(search ? { search } : {}),
+          // search,
         });
 
+        const stts = await getStats();
+
         setUserData(res);
+        setStats(stts);
       } catch (error) {
         console.error(error);
       } finally {
@@ -87,7 +100,9 @@ const UserPage = () => {
     };
 
     getUsers();
-  }, [curPageSize, currentPage]);
+  }, [curPageSize, currentPage, refetchKey, search]);
+
+  // console.log(statts);
 
   return (
     <div className="flex flex-col items-start gap-12 mt-12">
@@ -102,7 +117,7 @@ const UserPage = () => {
               </div>
 
               <p>{st.title}</p>
-              <h3>{formatNumber(st.value)}</h3>
+              <h3>{formatNumber(statts?.[st.variant as "activeUsers"])}</h3>
             </div>
           </Card>
         ))}
@@ -114,7 +129,10 @@ const UserPage = () => {
             {loading ? (
               <Skeleton lines={curPageSize ?? 20} />
             ) : (
-              <UsersTable users={userData.data!} />
+              <UsersTable
+                users={userData.data!}
+                setRefetchKey={setRefetchKey}
+              />
             )}
           </Card>
 

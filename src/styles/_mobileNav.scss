@@ -1,0 +1,120 @@
+.mnav {
+  display: none;
+}
+
+@media (max-width: 900px) {
+  .mnav {
+    display: block;
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    pointer-events: none; // only enable when open
+
+    &__overlay {
+      position: absolute;
+      inset: 0;
+      border: 0;
+      background: rgba(0, 0, 0, 0.35);
+      opacity: 0;
+      transition: opacity 180ms ease;
+      pointer-events: none;
+    }
+
+    &__panel {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100vh;
+      width: min(86vw, 320px);
+      background: #fff;
+      transform: translateX(-100%);
+      transition: transform 220ms ease;
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.18);
+
+      display: flex;
+      flex-direction: column;
+    }
+
+    &__header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    }
+
+    &__title {
+      margin: 0;
+      font-weight: 700;
+      font-size: 14px;
+      letter-spacing: 0.02em;
+    }
+
+    &__close {
+      border: 0;
+      background: transparent;
+      font-size: 18px;
+      cursor: pointer;
+      padding: 6px 8px;
+      border-radius: 8px;
+    }
+
+    &__content {
+      // ✅ max-height + scrollable
+      max-height: calc(100vh - 56px);
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+      padding: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    &__link {
+      text-decoration: none;
+      color: #213547;
+      padding: 10px 12px;
+      border-radius: 10px;
+      font-weight: 600;
+      font-size: 14px;
+
+      &:hover {
+        background: rgba(0, 0, 0, 0.04);
+      }
+
+      &--active {
+        background: rgba(0, 173, 181, 0.1);
+        border-left: 3px solid rgba(0, 173, 181, 1);
+      }
+    }
+
+    &--open {
+      pointer-events: auto;
+
+      .mnav__overlay {
+        opacity: 1;
+        pointer-events: auto;
+      }
+
+      .mnav__panel {
+        transform: translateX(0);
+      }
+    }
+  }
+}
+
+/* hide hamburger on desktop if you want */
+.hamburger {
+  display: none;
+}
+@media (max-width: 900px) {
+  .hamburger {
+    display: inline-flex;
+    border: 0;
+    background: transparent;
+    font-size: 22px;
+    cursor: pointer;
+    padding: 8px 10px;
+    border-radius: 10px;
+  }
+}

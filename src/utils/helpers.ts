@@ -31,3 +31,21 @@ export function formatNumber(
 
   return nf.format(n);
 }
+
+export const formatDate = (date: string | Date | number): string => {
+  const dateObj =
+    typeof date === "string" || typeof date === "number"
+      ? new Date(date)
+      : date;
+
+  const formatter = new Intl.DateTimeFormat("en-US", {
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+    hour: "numeric",
+    minute: "2-digit",
+    hour12: true,
+  });
+
+  return formatter.format(dateObj);
+};

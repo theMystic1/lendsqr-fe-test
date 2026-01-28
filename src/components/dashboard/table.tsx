@@ -1,6 +1,9 @@
 import type { ReactNode } from "react";
 import type { Childrentype } from "../../types/type";
 
+const TableOverflow = ({ children }: Childrentype) => {
+  return <div className="overflow">{children}</div>;
+};
 const Table = ({ children }: Childrentype) => {
   return <table className="table">{children}</table>;
 };
@@ -25,17 +28,17 @@ const Tr = ({
     </tr>
   );
 };
-const Td = ({ children }: Childrentype) => {
-  return <td className="table__td">{children}</td>;
+const Td = ({ children, className }: Childrentype) => {
+  return <td className={`table__td ${className}`}>{children}</td>;
 };
-const Th = ({ children, onClick }: Childrentype) => {
+const Th = ({ children, onClick, className }: Childrentype) => {
   return (
-    <th className="table__th " onClick={onClick}>
+    <th className={`table__th ${className}`} onClick={onClick}>
       {children}
     </th>
   );
 };
 
-export { THead, TBody, Tr, Td, Th };
+export { THead, TBody, Tr, Td, Th, TableOverflow };
 
 export default Table;

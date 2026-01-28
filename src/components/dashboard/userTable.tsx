@@ -1,8 +1,14 @@
 import type { TableHeader, User, UserStatus } from "../../types/type";
-import Table, { TBody, Td, Th, THead, Tr } from "./table";
-import { capitalizeFirst } from "../../utils/helpers";
+import Table, { TableOverflow, TBody, Td, Th, THead, Tr } from "./table";
+import { capitalizeFirst, formatDate } from "../../utils/helpers";
 import { IMgs } from "../../constants/constant";
-import { useEffect, useRef, useState } from "react";
+import {
+  useEffect,
+  useRef,
+  useState,
+  type Dispatch,
+  type SetStateAction,
+} from "react";
 import FilterDropDown from "../ui/filterDrop";
 
 import VisibilityOutlinedIcon from "@mui/icons-material/VisibilityOutlined";
@@ -10,6 +16,9 @@ import PersonOffOutlinedIcon from "@mui/icons-material/PersonOffOutlined";
 import PersonAddAltOutlinedIcon from "@mui/icons-material/PersonAddAltOutlined";
 import { RowMenu } from "../ui/menu";
 import { useNavigate } from "react-router-dom";
+import { updateUser } from "../../server/server";
+import toast from "react-hot-toast";
+import { useCustomParams } from "../../hooks/useCustomParam";
 
 const columns: TableHeader[] = [
   { id: "org", header: "ORGANIZATION", accessor: "organization" },
@@ -25,10 +34,22 @@ const columns: TableHeader[] = [
   },
 ];
 
-export const UsersTable = ({ users }: { users: User[] }) => {
+// phone, date, email
+
+export const UsersTable = ({
+  users,
+  setRefetchKey,
+}: {
+  users: User[];
+  setRefetchKey?: Dispatch<SetStateAction<number>>;
+}) => {
   const [openFilter, setOpenFilter] = useState<string>("");
   const tableRef = useRef<HTMLDivElement | null>(null);
   const navigate = useNavigate();
+
+  const { updateQuery, getParam } = useCustomParams();
+
+  const pageSize = getParam("pageSize") || 10;
 
   useEffect(() => {
     if (!openFilter) return;
@@ -51,73 +72,114 @@ export const UsersTable = ({ users }: { users: User[] }) => {
     };
   }, [openFilter]);
 
+  const handleActivation = async (
+    status: UserStatus,
+    type: "activation" | "blacklist",
+    id: string,
+  ) => {
+    try {
+      const newPage = +pageSize;
+
+      toast.loading("updating user....");
+      if (type === "activation") {
+        await updateUser(id, {
+          status: status === "active" ? "inactive" : "active",
+        });
+      } else {
+        await updateUser(id, {
+          status: status === "blacklisted" ? "active" : "blacklisted",
+        });
+      }
+
+      toast.remove();
+      toast.success("User update successful......");
+      updateQuery("pageSize", "");
+      updateQuery("pageSize", newPage.toString());
+      setRefetchKey?.((num: number) => num + 1);
+    } catch (error: any) {
+      const err = error.message || "Operation failed";
+
+      toast.remove();
+      toast.error(err);
+    }
+  };
+
   return (
     <div ref={tableRef}>
-      <Table>
-        <THead>
-          <Tr>
-            {columns.map((th) => (
-              <Th
-                key={th.id}
-                onClick={(e) => {
-                  e?.stopPropagation();
-                  if (th.id === "actions") return;
-                  setOpenFilter((prev) => (prev === th.id ? "" : th.id));
-                }}
-              >
-                <div className="flex items-center gap-2">
-                  <span>{th.header}</span>
-                  {th.id === "actions" ? null : (
-                    <img src={IMgs.filterIcon} alt="Filter icon" />
-                  )}
-                </div>
-
-                {openFilter === th.id ? (
-                  <div onClick={(e) => e.stopPropagation()}>
-                    <FilterDropDown />
+      <TableOverflow>
+        <Table>
+          <THead>
+            <Tr>
+              {columns.map((th) => (
+                <Th
+                  key={th.id}
+                  onClick={(e) => {
+                    e?.stopPropagation();
+                    if (th.id === "actions") return;
+                    setOpenFilter((prev) => (prev === "" ? th.id : ""));
+                  }}
+                  className={th.id}
+                >
+                  <div className="flex items-center gap-2">
+                    <span>{th.header}</span>
+                    {th.id === "actions" ? null : (
+                      <img src={IMgs.filterIcon} alt="Filter icon" />
+                    )}
                   </div>
-                ) : null}
-              </Th>
-            ))}
-          </Tr>
-        </THead>
-
-        <TBody>
-          {users.map((usr) => (
-            <Tr key={usr.id}>
-              <Td>{capitalizeFirst(usr.organization)}</Td>
-              <Td>{usr.fullName}</Td>
-              <Td>{usr.emailAddress}</Td>
-              <Td>{usr.phoneNumber}</Td>
-              <Td>{usr.createdAt}</Td>
-              <Td>
-                <TableStatus variant={usr.status} />
-              </Td>
-              <Td>
-                <RowMenu
-                  items={[
-                    {
-                      label: "View Details",
-                      onClick: () => navigate(usr.id),
-                      icon: <VisibilityOutlinedIcon />,
-                    },
-                    {
-                      label: "Blacklist user",
-                      onClick: () => {},
-                      icon: <PersonOffOutlinedIcon />,
-                    },
-                    {
-                      label: "Activate user",
-                      onClick: () => {},
-                      icon: <PersonAddAltOutlinedIcon />,
-                    },
-                  ]}
-                />
-              </Td>
+                </Th>
+              ))}
             </Tr>
-          ))}
-        </TBody>
-      </Table>
+
+            {openFilter ? <FilterDropDown /> : null}
+          </THead>
+
+          <TBody>
+            {users.map((usr) => (
+              <Tr key={usr.id}>
+                <Td>{capitalizeFirst(usr.organization)}</Td>
+                <Td>{usr.fullName}</Td>
+                <Td className="email">{usr.emailAddress}</Td>
+                <Td className="phone">{usr.phoneNumber}</Td>
+                <Td className="date">{formatDate(usr.createdAt)}</Td>
+                <Td>
+                  <TableStatus variant={usr.status} />
+                </Td>
+                <Td>
+                  <RowMenu
+                    items={[
+                      {
+                        label: "View Details",
+                        onClick: () => navigate(usr.id),
+                        icon: <VisibilityOutlinedIcon />,
+                      },
+                      {
+                        label:
+                          usr.status === "blacklisted"
+                            ? "Remove blacklist"
+                            : "Blacklist user",
+                        onClick: async () =>
+                          handleActivation(usr.status, "blacklist", usr.id),
+                        icon: <PersonOffOutlinedIcon />,
+                        // isAsync: true,
+                      },
+                      {
+                        label:
+                          usr.status === "active"
+                            ? "De-activate user"
+                            : "Activate user",
+                        onClick: async () =>
+                          handleActivation(usr.status, "activation", usr.id),
+                        icon: <PersonAddAltOutlinedIcon />,
+                        // isAsync: true,
+                      },
+                    ]}
+                  />
+                </Td>
+              </Tr>
+            ))}
+          </TBody>
+        </Table>
+      </TableOverflow>
     </div>
   );
 };
