@@ -9,6 +9,8 @@ import { login } from "../../server/server";
 
 const LoginPage = () => {
   const [showPwd, setShowPwd] = useState(false);
+  const [isLogging, setIsLogging] = useState(false);
+
   const navigate = useNavigate();
 
   const [value, setValue] = useState({
@@ -23,17 +25,24 @@ const LoginPage = () => {
     }));
   };
   const handleLogin = async () => {
+    toast.loading("logging in...");
+    setIsLogging(true);
     try {
       const loginItem: any = await login(value.email, value.password);
 
       localStorage.setItem("ADMIN_TOKEN", loginItem?.token);
+      localStorage.setItem("ADMIN_ID", loginItem?.admin?.id);
 
-      toast.success("Login successful");
       navigate("/");
+      toast.remove();
       console.log(loginItem);
+      toast.success("Login successful");
     } catch (error: any) {
       console.error(error);
+      toast.remove();
       toast.error(error.message || "Login failed");
+    } finally {
+      setIsLogging(false);
     }
   };
   return (
@@ -43,7 +52,7 @@ const LoginPage = () => {
           <Logo />
         </div>
         <Column className=" col-1 items-start justify-center mt-8 gap-20">
-          <Column className="items-center justify-center">
+          <Column className="items-center justify-center w-full p-4">
             <img src={IMgs.pablo} className="login-img" />
           </Column>
         </Column>
@@ -81,7 +90,9 @@ const LoginPage = () => {
               </Link>
             </Row>
           </Column>
-          <CustomBtn onClick={handleLogin}>Login</CustomBtn>
+          <CustomBtn onClick={handleLogin} disabled={isLogging}>
+            {isLogging ? "Logging in..." : "Login"}
+          </CustomBtn>
         </Column>
       </div>{" "}
     </>

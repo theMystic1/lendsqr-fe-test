@@ -46,7 +46,6 @@ const UserPage = () => {
   const [loading, setLoading] = useState(false);
   const [refetchKey, setRefetchKey] = useState(0);
 
-  // ✅ Single source of truth: URL
   const query = useMemo(() => {
     const sp = new URLSearchParams(location.search);
 
@@ -74,7 +73,6 @@ const UserPage = () => {
     const run = async () => {
       setLoading(true);
 
-      // ✅ 1) fetch users FIRST and set immediately (so UI renders)
       try {
         const res = await listUsers({
           page: query.page,
@@ -92,7 +90,6 @@ const UserPage = () => {
         if (!cancelled) setLoading(false);
       }
 
-      // ✅ 2) fetch stats separately (failure shouldn't block table render)
       try {
         const stts = await getStats();
         if (!cancelled) setStats(stts);
@@ -111,41 +108,49 @@ const UserPage = () => {
   return (
     <div className="flex flex-col items-start gap-12 mt-12">
       <h2>Users</h2>
-
-      <div className="grid grid-4 gap-4 w-full">
-        {stats.map((st, i) => (
-          <Card key={i}>
-            <div className="card__header">
-              <div className={`card__icon card__icon--${st.variant}`}>
-                <img src={st.icon} alt="" />
-              </div>
-              <p>{st.title}</p>
-
-              {/* ✅ correct dynamic key lookup */}
-              <h3>{formatNumber(statts ? (statts as any)[st.variant] : 0)}</h3>
-            </div>
-          </Card>
-        ))}
-      </div>
-
-      {userData ? (
+      {loading ? (
+        <Skeleton lines={100} />
+      ) : (
         <>
-          <Card className="card__tall relative">
-            {loading ? (
-              <Skeleton lines={userData.pageSize ?? 20} />
-            ) : (
-              <UsersTable users={userData.data} setRefetchKey={setRefetchKey} />
-            )}
-          </Card>
+          <div className="grid grid-4 gap-4 w-full">
+            {stats.map((st, i) => (
+              <Card key={i}>
+                <div className="card__header">
+                  <div className={`card__icon card__icon--${st.variant}`}>
+                    <img src={st.icon} alt="" />
+                  </div>
+                  <p>{st.title}</p>
 
-          <Pagination
-            page={userData.page}
-            pageSize={userData.pageSize}
-            total={userData.total}
-            totalPages={userData.totalPages}
-          />
+                  <h3>
+                    {formatNumber(statts ? (statts as any)[st.variant] : 0)}
+                  </h3>
+                </div>
+              </Card>
+            ))}
+          </div>
+
+          {userData ? (
+            <>
+              <Card className="card__tall relative">
+                {/* {
+            ) : (
+            )} */}
+                <UsersTable
+                  users={userData.data}
+                  setRefetchKey={setRefetchKey}
+                />
+              </Card>
+
+              <Pagination
+                page={userData.page}
+                pageSize={userData.pageSize}
+                total={userData.total}
+                totalPages={userData.totalPages}
+              />
+            </>
+          ) : null}
         </>
-      ) : null}
+      )}
     </div>
   );
 };

@@ -53,6 +53,9 @@ export const formatDate = (date: string | Date | number): string => {
 export const setLocalStorage = (key: string, value: string) => {
   localStorage.setItem(key, value);
 };
+export const getLocalStorage = (key: string) => {
+  return localStorage.getItem(key);
+};
 
 export const getToken = () => {
   return localStorage.getItem("ADMIN_TOKEN");
