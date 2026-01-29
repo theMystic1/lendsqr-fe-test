@@ -1,5 +1,5 @@
 @use "sass:string";
-@use "./variables/tokens.scss" as t;
+@use "../variables/tokens.scss" as t;
 
 @function _k($key) {
   @return string.replace("#{$key}", ".", "-");

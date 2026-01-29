@@ -51,6 +51,8 @@ export const UsersTable = ({
 
   const pageSize = getParam("pageSize") || 10;
 
+  // console.log(users);
+
   useEffect(() => {
     if (!openFilter) return;
 

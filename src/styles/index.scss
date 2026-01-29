@@ -6,7 +6,7 @@
 
 @use "./card.scss" as card;
 
-@use "./layout.scss" as layout;
+@use "./utilities/layout.scss" as layout;
 @use "./table.scss" as tb;
 @use "./skeleton.scss" as sk;
 @use "./rowMenu.scss" as rm;

@@ -6,7 +6,7 @@ import { sections } from "../../constants/constant";
 import React from "react";
 import UserDetails from "../../pages/usersDetail";
 import Login from "../../pages/login";
-import ProtectedRoute from "./protectedToute";
+import ProtectedRoute from "./protectedRoute";
 
 const MainLayout = () => {
   return (

@@ -11,7 +11,7 @@ const NavBar = () => {
   const { updateQuery } = useCustomParams();
   return (
     <nav className="nav flex items-center justify-between gap-10">
-      <div className="flex items-center justify-between nav__item">
+      <div className="flex items-center gap-4 justify-between nav__item">
         <Logo />
 
         <div className="flex items-center relative">
